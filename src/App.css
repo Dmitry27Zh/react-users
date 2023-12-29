@@ -103,6 +103,9 @@
   transform: translateY(2px);
   box-shadow: none;
 }
+.send-invite-btn:disabled {
+  opacity: 0.5;
+}
 .success-block {
   display: flex;
   align-items: center;

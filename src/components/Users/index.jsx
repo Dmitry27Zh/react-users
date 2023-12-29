@@ -30,7 +30,7 @@ const Users = ({ users, isLoading, search, onSearch, invites, onInvite, onSucces
           ))}
         </ul>
       )}
-      <button className="send-invite-btn" onClick={onSuccess}>
+      <button className="send-invite-btn" onClick={onSuccess} disabled={invites.length === 0}>
         Отправить приглашение
       </button>
     </>
