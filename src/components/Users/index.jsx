@@ -18,7 +18,9 @@ const Users = ({ users, isLoading }) => {
         </div>
       ) : (
         <ul className="users-list">
-          <User />
+          {users.map(() => (
+            <User key={crypto.randomUUID()} />
+          ))}
         </ul>
       )}
       <button className="send-invite-btn">Отправить приглашение</button>

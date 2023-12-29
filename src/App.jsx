@@ -5,6 +5,7 @@ import Success from './components/Success'
 
 function App() {
   const [users, setUsers] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
     fetch('https://reqres.in/api/users')
       .then((res) => res.json())
@@ -13,11 +14,12 @@ function App() {
         console.warn(err)
         alert('Error')
       })
+      .finally(() => setIsLoading(false))
   }, [])
 
   return (
     <div className="App">
-      <Users users={users} isLoading />
+      <Users users={users} isLoading={isLoading} />
       {/* <Success /> */}
     </div>
   )
