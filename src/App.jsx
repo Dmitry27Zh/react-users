@@ -6,6 +6,7 @@ import Success from './components/Success'
 function App() {
   const [users, setUsers] = useState([])
   const [isLoading, setIsLoading] = useState(true)
+  const [search, setSearch] = useState('')
   useEffect(() => {
     fetch('https://reqres.in/api/users')
       .then((res) => res.json())
@@ -16,10 +17,13 @@ function App() {
       })
       .finally(() => setIsLoading(false))
   }, [])
+  const handleSearch = (e) => {
+    setSearch(e.target.value)
+  }
 
   return (
     <div className="App">
-      <Users users={users} isLoading={isLoading} />
+      <Users users={users} isLoading={isLoading} search={search} onSearch={handleSearch} />
       {/* <Success /> */}
     </div>
   )
