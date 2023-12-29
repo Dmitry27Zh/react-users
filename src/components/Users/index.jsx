@@ -18,8 +18,8 @@ const Users = ({ users, isLoading }) => {
         </div>
       ) : (
         <ul className="users-list">
-          {users.map(() => (
-            <User key={crypto.randomUUID()} />
+          {users.map((user) => (
+            <User key={user.id} {...user} />
           ))}
         </ul>
       )}
