@@ -1,7 +1,7 @@
 import Skeleton from './Skeleton'
 import User from '../User'
 
-const Users = ({ users, isLoading, search, onSearch }) => {
+const Users = ({ users, isLoading, search, onSearch, invites, onInvite }) => {
   const filteredUsers = users.filter((user) => {
     const fullName = `${user.first_name} ${user.last_name}`
     const include = search.trim().toLowerCase()
@@ -26,7 +26,7 @@ const Users = ({ users, isLoading, search, onSearch }) => {
       ) : (
         <ul className="users-list">
           {filteredUsers.map((user) => (
-            <User key={user.id} {...user} />
+            <User key={user.id} isInvited={invites.includes(user.id)} onInvite={onInvite} {...user} />
           ))}
         </ul>
       )}

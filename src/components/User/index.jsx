@@ -1,4 +1,6 @@
-const User = ({ id, email, first_name, last_name, avatar }) => {
+const User = ({ id, email, first_name, last_name, avatar, isInvited, onInvite }) => {
+  const imgSrc = `/assets/${isInvited ? 'minus' : 'plus'}.svg`
+
   return (
     <li>
       <div>
@@ -15,7 +17,7 @@ const User = ({ id, email, first_name, last_name, avatar }) => {
           </p>
         </div>
       </div>
-      <img className="action" src="/assets/plus.svg" alt="Action" />
+      <img className="action" src={imgSrc} alt="Action" onClick={() => onInvite(id)} />
     </li>
   )
 }
