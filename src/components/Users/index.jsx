@@ -2,6 +2,13 @@ import Skeleton from './Skeleton'
 import User from '../User'
 
 const Users = ({ users, isLoading, search, onSearch }) => {
+  const filteredUsers = users.filter((user) => {
+    const fullName = `${user.first_name} ${user.last_name}`
+    const include = search.trim().toLowerCase()
+
+    return fullName.toLowerCase().includes(include) || user.email.includes(include)
+  })
+
   return (
     <>
       <div className="search">
@@ -18,7 +25,7 @@ const Users = ({ users, isLoading, search, onSearch }) => {
         </div>
       ) : (
         <ul className="users-list">
-          {users.map((user) => (
+          {filteredUsers.map((user) => (
             <User key={user.id} {...user} />
           ))}
         </ul>
