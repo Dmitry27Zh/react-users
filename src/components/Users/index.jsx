@@ -1,7 +1,7 @@
 import Skeleton from './Skeleton'
 import User from '../User'
 
-const Users = ({ users, isLoading, search, onSearch, invites, onInvite }) => {
+const Users = ({ users, isLoading, search, onSearch, invites, onInvite, onSuccess }) => {
   const filteredUsers = users.filter((user) => {
     const fullName = `${user.first_name} ${user.last_name}`
     const include = search.trim().toLowerCase()
@@ -30,7 +30,9 @@ const Users = ({ users, isLoading, search, onSearch, invites, onInvite }) => {
           ))}
         </ul>
       )}
-      <button className="send-invite-btn">Отправить приглашение</button>
+      <button className="send-invite-btn" onClick={onSuccess}>
+        Отправить приглашение
+      </button>
     </>
   )
 }

@@ -1,9 +1,9 @@
-const Success = () => {
+const Success = ({ count }) => {
   return (
     <div className="success-block">
       <img src="/assets/success.svg" alt="Success" />
       <h3>Успешно!</h3>
-      <p>Всем 4 пользователям отправлено приглашение.</p>
+      <p>Всем пользователям ({count}) отправлено приглашение.</p>
       <button className="send-invite-btn">Назад</button>
     </div>
   )

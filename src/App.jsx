@@ -8,6 +8,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true)
   const [search, setSearch] = useState('')
   const [invites, setInvites] = useState([])
+  const [isSuccess, setIsSuccess] = useState(false)
   useEffect(() => {
     fetch('https://reqres.in/api/users')
       .then((res) => res.json())
@@ -28,18 +29,25 @@ function App() {
       setInvites((prevState) => [...prevState, id])
     }
   }
+  const handleSuccess = () => {
+    setIsSuccess(true)
+  }
 
   return (
     <div className="App">
-      <Users
-        users={users}
-        isLoading={isLoading}
-        search={search}
-        onSearch={handleSearch}
-        invites={invites}
-        onInvite={handleInvite}
-      />
-      {/* <Success /> */}
+      {isSuccess ? (
+        <Success count={invites.length} />
+      ) : (
+        <Users
+          users={users}
+          isLoading={isLoading}
+          search={search}
+          onSearch={handleSearch}
+          invites={invites}
+          onInvite={handleInvite}
+          onSuccess={handleSuccess}
+        />
+      )}
     </div>
   )
 }
